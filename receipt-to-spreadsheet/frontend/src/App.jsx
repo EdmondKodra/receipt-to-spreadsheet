@@ -282,7 +282,7 @@ export default function App() {
           fontSize: "11px",
           color: "var(--ink3)",
         }}>
-          Powered by GPT-4 Vision · Images are not stored · Built with React + Express
+          Powered by Groq Vision · Images are not stored · Built with React + Express
         </span>
       </footer>
     </div>

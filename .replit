@@ -1,0 +1,1 @@
+run = "cd frontend && npm install && npm run build && cd .. && cd backend && npm install && NODE_ENV=production node server.js"

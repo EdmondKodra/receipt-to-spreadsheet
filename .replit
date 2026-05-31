@@ -3,7 +3,3 @@ command = "cd frontend && npm install && npm run build && cd ../backend && npm i
 
 [nix]
 channel = "stable-23_11"
-
-[deployment]
-run = ["sh", "-c", "cd frontend && npm install && npm run build && cd ../backend && npm install && NODE_ENV=production node server.js"]
-deploymentTarget = "cloudrun"

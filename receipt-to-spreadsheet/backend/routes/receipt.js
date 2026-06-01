@@ -19,7 +19,15 @@ const upload = multer({
 });
 
 const PROMPT = `You are a receipt data extraction assistant.
-Extract all information from this receipt image and return ONLY valid JSON with no markdown, no code blocks, no explanation.
+
+Determine first whether the image is a receipt.
+
+If the image is NOT a receipt, return ONLY this JSON:
+{
+  "error": "NOT_A_RECEIPT"
+}
+
+If the image is a receipt, extract all information and return ONLY valid JSON with no markdown, no code blocks, no explanation.
 
 Return exactly this structure:
 {
@@ -114,20 +122,44 @@ router.post("/extract", async (req, res) => {
       .trim();
 
     let parsed;
-    try {
-      parsed = JSON.parse(cleaned);
-    } catch {
-      console.error("JSON parse failed. Raw output:", rawContent);
-      return res.status(422).json({
-        error: "We couldn't read this receipt. Please try another image.",
-      });
-    }
+try {
+  parsed = JSON.parse(cleaned);
+} catch {
+  console.error("JSON parse failed. Raw output:", rawContent);
+  return res.status(422).json({
+    error: "We couldn't read this receipt. Please try another image.",
+  });
+}
 
-    if (!Array.isArray(parsed.items)) {
-      parsed.items = [];
-    }
+// Not a receipt
+if (parsed.error === "NOT_A_RECEIPT") {
+  return res.status(422).json({
+    error: "The uploaded image is not a receipt.",
+  });
+}
 
-    return res.json({ success: true, data: parsed });
+if (!Array.isArray(parsed.items)) {
+  parsed.items = [];
+}
+
+// Empty extraction = probably not a receipt
+const hasMeaningfulData =
+  parsed.vendor ||
+  parsed.date ||
+  parsed.currency ||
+  parsed.total ||
+  parsed.items.length > 0;
+
+if (!hasMeaningfulData) {
+  return res.status(422).json({
+    error: "The uploaded image does not appear to be a receipt.",
+  });
+}
+
+return res.json({
+  success: true,
+  data: parsed,
+});
   } catch (err) {
     console.error("Groq API error:", err?.status, err?.message || err);
 

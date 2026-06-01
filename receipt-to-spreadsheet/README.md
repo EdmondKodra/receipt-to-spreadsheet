@@ -16,7 +16,6 @@
 - ✅ **Success notification** — confirmation after successful extraction
 - ❌ **Error handling** — clear messages for invalid files, API errors, unreadable images
 - 📱 **Mobile-friendly** — responsive layout works on phones and tablets
-- 
 
 ### 1. Clone the repository
 

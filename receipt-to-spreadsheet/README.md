@@ -4,7 +4,6 @@
 
 **Receipt to Spreadsheet** is a full-stack web application that uses Groq Vision to extract structured data from receipt images. Upload a JPG or PNG of any receipt and receive a formatted table with vendor, date, line items, quantities, prices, and totals — ready to export as CSV.
 
----
 
 ## ✨ Features
 
@@ -51,8 +50,6 @@ This starts both servers concurrently:
 -  Multi-language receipt support
 -  Dark/light mode toggle
 -  Confidence scores per extracted field
-
----
 
 ## 💬 Exact AI Prompt Used
 

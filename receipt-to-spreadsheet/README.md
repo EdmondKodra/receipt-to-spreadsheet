@@ -51,7 +51,7 @@ This starts both servers concurrently:
 -  Dark/light mode toggle
 -  Confidence scores per extracted field
 
-## 💬 Exact AI Prompt Used
+## 💬 Some of my AI Prompt Used
 
 The following system prompt is sent to Cloude Vision for each extraction:
 

@@ -81,3 +81,16 @@ Rules:
 - Normalize prices to decimal format (e.g. "12.50" not "12,50")
 - Return ONLY the JSON object, nothing else
 
+-Running npm run dev from the root throws 'concurrently is not recognized. How do I fix this
+
+-Can you replace the Gemini API integration with Groq as the vision API provider, keeping the same functionality?
+
+-The frontend is throwing 'Failed to execute json on Response: Unexpected end of JSON input' when submitting a receipt image. Can you identify and fix the root cause
+
+-The app returns a success response even when a non-receipt image is uploaded. Can you add validation to detect if the uploaded image is actually a receipt and return a clear error message if it's not?
+
+-Can you add a one-click CSV export feature that downloads all extracted receipt data with a filename format of receipt-YYYY-MM-DD.csv, using the receipt date if available or today's date as fallback?
+
+-The backend crashes with EADDRINUSE on port 3001. Can you help me identify and kill the process using that port so I can restart the server?
+
+-Replit's free tier shuts down after 30 minutes of inactivity. Is there a free service that can ping the app
